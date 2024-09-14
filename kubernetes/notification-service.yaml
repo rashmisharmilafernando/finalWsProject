@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: notification-service
-        image: sudeeramadushan/notification-service:latest
+        image: rashmisharmila/notification-service:latest
         ports:
         - containerPort: 5004
 ---

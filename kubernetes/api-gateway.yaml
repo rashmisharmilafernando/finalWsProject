@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: api-gateway
-        image: sudeeramadushan/api-gateway:latest
+        image: rashmisharmila/api-gateway:latest
         ports:
         - containerPort: 5000
 ---

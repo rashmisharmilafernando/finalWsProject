@@ -35,7 +35,7 @@ jobs:
           ["wallet-service"]="wallet-service/Dockerfile"
         )
         for service in "${!services[@]}"; do
-          docker buildx build --file "${services[$service]}" --tag sudeeramadushan/$service:latest --push .
+          docker buildx build --file "${services[$service]}" --tag rashmisharmila/$service:latest --push .
         done
 
     - name: Log out from Docker Hub

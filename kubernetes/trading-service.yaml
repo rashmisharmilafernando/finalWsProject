@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: trading-service
-        image: sudeeramadushan/trading-service:latest
+        image: rashmisharmila/trading-service:latest
         ports:
         - containerPort: 5001
 ---

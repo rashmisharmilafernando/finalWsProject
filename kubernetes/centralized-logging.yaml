@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: centralized-logging
-        image: sudeeramadushan/centralized-logging:latest
+        image: rashmisharmila/centralized-logging:latest
         ports:
         - containerPort: 5005
 ---

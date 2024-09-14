@@ -1,0 +1,42 @@
+name: Build and Push Docker Image
+
+on:
+  push:
+    branches:
+      - master
+  # workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Set up Docker Buildx
+      uses: docker/setup-buildx-action@v2
+
+    - name: Log in to Docker Hub
+      uses: docker/login-action@v2
+      with:
+        username: ${{ secrets.DOCKER_USERNAME }}
+        password: ${{ secrets.DOCKER_PASSWORD }}
+
+    - name: Build and push Docker images
+      run: |
+        declare -A services
+        services=(
+          ["account-service"]="account-service/Dockerfile"
+          ["api-gateway"]="api-gateway/Dockerfile"
+          ["centralized-logging"]="centralized-logging/Dockerfile"
+          ["notification-service"]="notification-service/Dockerfile"
+          ["trading-service"]="trading-service/Dockerfile"
+          ["wallet-service"]="wallet-service/Dockerfile"
+        )
+        for service in "${!services[@]}"; do
+          docker buildx build --file "${services[$service]}" --tag sudeeramadushan/$service:latest --push .
+        done
+
+    - name: Log out from Docker Hub
+      run: docker logout

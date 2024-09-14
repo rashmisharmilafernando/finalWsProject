@@ -3,7 +3,7 @@ name: CI/CD Pipeline
 on:
   push:
     branches:
-      - master
+      - main
   workflow_dispatch:
 
 jobs:
@@ -29,8 +29,8 @@ jobs:
       run: |
         services=("account-service" "api-gateway" "centralized-logging" "notification-service" "trading-service" "wallet-service")
         for service in "${services[@]}"; do
-          docker build -t sudeeramadushan/$service:latest ./$service
-          docker push sudeeramadushan/$service:latest
+          docker build -t rashmisharmila/$service:latest ./$service
+          docker push rashmisharmila/$service:latest
         done
 
     - name: Set up AWS CLI
